@@ -1,5 +1,5 @@
 // A C++ Program to detect cycle in a graph 
-#include<iostream> 
+#include <iostream> 
 #include <list> 
 #include <limits.h> 
 
@@ -10,6 +10,7 @@ class Graph
 	int V; // No. of vertices 
 	list<int> *adj; // Pointer to an array containing adjacency lists 
 	bool isCyclicUtil(int v, bool visited[], bool *rs); // used by isCyclic() 
+
 public: 
 	Graph(int V); // Constructor 
 	void addEdge(int v, int w); // to add an edge to graph 
@@ -22,6 +23,8 @@ Graph::Graph(int V)
 	adj = new list<int>[V]; 
 } 
 
+
+// To add an edge to the graph
 void Graph::addEdge(int v, int w) 
 { 
 	adj[v].push_back(w); // Add w to v’s list. 
@@ -45,7 +48,6 @@ bool Graph::isCyclicUtil(int v, bool visited[], bool *recStack)
 			else if (recStack[*i]) 
 				return true; 
 		} 
-
 	} 
 	recStack[v] = false; // remove the vertex from recursion stack 
 	return false; 
@@ -70,24 +72,51 @@ bool Graph::isCyclic()
 	for(int i = 0; i < V; i++) 
 		if (isCyclicUtil(i, visited, recStack)) 
 			return true; 
-
 	return false; 
 } 
 
 int main() 
 { 
-	// Create a graph given in the above diagram 
-	Graph g(4); 
-	g.addEdge(0, 1); 
-	g.addEdge(0, 2); 
-	g.addEdge(1, 2); 
-	g.addEdge(2, 0); 
-	g.addEdge(2, 3); 
-	g.addEdge(3, 3); 
+	//Create a graph given in the above diagram 
+	// Graph g(4); 
+	// g.addEdge(0, 1); 
+	// g.addEdge(0, 2); 
+	// g.addEdge(1, 2); 
+	// g.addEdge(2, 0); 
+	// g.addEdge(2, 3); 
+	// g.addEdge(3, 3); 
 
-	if(g.isCyclic()) 
+
+
+//User input data
+   int n,m;
+   scanf("%d %d", &n, &m);
+
+   int u[m] , v[m] ;
+   long int h[m], t[m] ;
+
+    int i;
+    for( i = 0; i < m; i +=1 ){
+        // printf("line%d : ",i);
+        scanf("%d%d%ld%ld",&u[i],&v[i], &t[i], &h[i]);
+    }
+
+    // printf("%d \n", i);
+    // printf("%ld \n", t[0]-h[0]);
+
+    Graph g(n);
+    // making above uhown graph 
+	for (int j=0; j<m;j++){
+        // printf("%ld", t[j]-h[j]);
+	    g.addEdge(u[j]-1, v[j]-1); 
+    }
+////
+
+
+	if(g.isCyclic())
 		cout << "Graph contains cycle\n"; 
 	else
 		cout << "Graph doesn't contain cycle\n"; 
 	return 0; 
-} 
+    
+}
