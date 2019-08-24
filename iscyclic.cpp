@@ -4,7 +4,7 @@
 #include <limits.h> 
 
 using namespace std; 
-
+int count =0;
 class Graph 
 { 
 	int V; // No. of vertices 
@@ -34,9 +34,11 @@ void Graph::addEdge(int v, int w)
 // visited[] and *recStack are the same variable declaration type 
 bool Graph::isCyclicUtil(int v, bool visited[], bool *recStack) 
 { 
+	// printf("%d",v);
 	if(visited[v] == false) 
 	{ 
-		// Mark the current node as visited and part of recursion stack 
+		// Mark the current node as visited and part of recursion stack
+		// printf("%d",v) ; // To print the path in which the control travels
 		visited[v] = true; 
 		recStack[v] = true; 
 
@@ -45,16 +47,16 @@ bool Graph::isCyclicUtil(int v, bool visited[], bool *recStack)
 		for(i = adj[v].begin(); i != adj[v].end(); ++i) 
 		{ 
 			if ( !visited[*i] && isCyclicUtil(*i, visited, recStack) )  //
-				{ //
-				printf("Level %d\n",*i);
+				{ 
 				return true; 
 				}
 			else if (recStack[*i]) // Place where you find a cycle
 				{
 				printf("Found a cycle at node %d\n", v+1);
-				continue; 
+				count =1;
+				// return true;
+				// continue; 
 				}
-			
 		} 
 	} 
 	recStack[v] = false; // remove the vertex from recursion stack 
@@ -82,6 +84,9 @@ bool Graph::isCyclic()
 			{	printf("\n\n\nSource node of the cycle: %d\n",i);
 				return true;
 			} 
+	if (count ==0){
+		cout << "Graph doesn't contain cycle\n";
+	}
 	return false; 
 } 
 
@@ -96,8 +101,6 @@ int main()
 	// g.addEdge(2, 3); 
 	// g.addEdge(3, 3); 
 
-
-
 //User input data
    int n,m;
    scanf("%d %d", &n, &m);
@@ -110,6 +113,7 @@ int main()
         // printf("line%d : ",i);
         scanf("%d%d%ld%ld",&u[i],&v[i], &t[i], &h[i]);
     }
+	
 
     // printf("%d \n", i);
     // printf("%ld \n", t[0]-h[0]);
@@ -120,11 +124,12 @@ int main()
         // printf("%ld", t[j]-h[j]);
 	    g.addEdge(u[j]-1, v[j]-1); 
     }
+	g.isCyclic();
 
-	if(g.isCyclic())
-		cout << "Graph contains cycle\n"; 
-	else
-		cout << "Graph doesn't contain cycle\n"; 
-	return 0; 
+	// if(g.isCyclic())
+	// 	cout << "Graph contains cycle\n"; 
+	// else
+	// 	cout << "Graph doesn't contain cycle\n"; 
+	// return 0; 
     
 }
