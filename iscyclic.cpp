@@ -30,7 +30,8 @@ void Graph::addEdge(int v, int w)
 	adj[v].push_back(w); // Add w to v’s list. 
 } 
 
-// This function is a variation of DFSUtil() in https://www.geeksforgeeks.org/archives/18212 
+// This function is a variation of DFSUtil() in https://www.geeksforgeeks.org/archives/18212
+// visited[] and *recStack are the same variable declaration type 
 bool Graph::isCyclicUtil(int v, bool visited[], bool *recStack) 
 { 
 	if(visited[v] == false) 
@@ -44,11 +45,13 @@ bool Graph::isCyclicUtil(int v, bool visited[], bool *recStack)
 		for(i = adj[v].begin(); i != adj[v].end(); ++i) 
 		{ 
 			if ( !visited[*i] && isCyclicUtil(*i, visited, recStack) )  //
-				{ //printf("%d",*i);
+				{ //
+				printf("Level %d\n",*i);
 				return true; 
 				}
-			else if (recStack[*i]) 
-				{printf("%d",*i);
+			else if (recStack[*i]) // Place where you find a cycle
+				{
+				printf("Found a cycle\n");
 				return true; 
 				}
 		} 
@@ -75,7 +78,9 @@ bool Graph::isCyclic()
 	// DFS trees 
 	for(int i = 0; i < V; i++) 
 		if (isCyclicUtil(i, visited, recStack)) 
-			return true; 
+			{	printf("\n\n\nSource node of the cycle: %d\n",i);
+				return true;
+			} 
 	return false; 
 } 
 
