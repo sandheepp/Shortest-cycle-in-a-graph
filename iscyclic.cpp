@@ -12,9 +12,9 @@ class Graph
 	bool isCyclicUtil(int v, bool visited[], bool *rs); // used by isCyclic() 
 
 public: 
-	Graph(int V); // Constructor 
-	void addEdge(int v, int w); // to add an edge to graph 
-	bool isCyclic(); // returns true if there is a cycle in this graph 
+	Graph(int V); // Constructor of this class
+	void addEdge(int v, int w); // fucntion defenition to add an edge to graph 
+	bool isCyclic(); // fucntion declaration, returns true if there is a cycle in this graph 
 }; 
 
 Graph::Graph(int V) 
