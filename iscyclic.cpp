@@ -43,10 +43,14 @@ bool Graph::isCyclicUtil(int v, bool visited[], bool *recStack)
 		list<int>::iterator i; 
 		for(i = adj[v].begin(); i != adj[v].end(); ++i) 
 		{ 
-			if ( !visited[*i] && isCyclicUtil(*i, visited, recStack) ) 
+			if ( !visited[*i] && isCyclicUtil(*i, visited, recStack) )  //
+				{ //printf("%d",*i);
 				return true; 
+				}
 			else if (recStack[*i]) 
+				{printf("%d",*i);
 				return true; 
+				}
 		} 
 	} 
 	recStack[v] = false; // remove the vertex from recursion stack 
@@ -110,8 +114,6 @@ int main()
         // printf("%ld", t[j]-h[j]);
 	    g.addEdge(u[j]-1, v[j]-1); 
     }
-////
-
 
 	if(g.isCyclic())
 		cout << "Graph contains cycle\n"; 
