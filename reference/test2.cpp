@@ -1,4 +1,4 @@
-// c++ program to find uhortest weighted 
+// c++ program to find shortest weighted 
 // cycle in undirected graph 
 #include<bits/stdc++.h> 
 using namespace std; 

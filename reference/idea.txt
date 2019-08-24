@@ -1,0 +1,14 @@
+   1.  Fix some node u.
+   2.  Run Dijkstra's algorithm with source u, denote the distance of a vertex v to u as dv. 
+       If you store parents, this will give you a shortest-path tree rooted at u.
+   3.  Preprocess the tree for LCA queries.
+
+   or
+
+   You can store for each node the first node you saw on the shortest path to that node 
+   other than u with a small modification to Dijkstra's, 
+   and then check if those values are different instead of checking that the LCA is u.
+    
+    4. Consider some edge e = {v, x} that is not in the shortest-path tree. 
+    If lca(v, x) = u, then the path is a simple cycle containing u, 
+    with weight dv + dx + w(e). The answer for vertex u is the minimum weight over all such cycles.

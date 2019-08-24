@@ -59,9 +59,9 @@ bool Graph::isCyclicUtil(int v, bool visited[], bool *recStack)
 		for(i = adj[v].begin(); i != adj[v].end(); ++i) 
 		{ 
 			if ( !visited[*i] && isCyclicUtil(*i, visited, recStack) ) 
-				return true; 
+				return 	true; 
 			else if (recStack[*i]) 
-				return true; 
+				continue; 
 		} 
 
 	} 
@@ -105,6 +105,7 @@ int main()
 
 	if(g.isCyclic()) 
 		cout << "Graph contains cycle"; 
+
 	else
 		cout << "Graph doesn't contain cycle"; 
 	return 0; 

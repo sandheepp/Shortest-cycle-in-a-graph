@@ -51,9 +51,10 @@ bool Graph::isCyclicUtil(int v, bool visited[], bool *recStack)
 				}
 			else if (recStack[*i]) // Place where you find a cycle
 				{
-				printf("Found a cycle\n");
-				return true; 
+				printf("Found a cycle at node %d\n", v+1);
+				continue; 
 				}
+			
 		} 
 	} 
 	recStack[v] = false; // remove the vertex from recursion stack 
