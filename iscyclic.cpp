@@ -46,7 +46,7 @@ bool Graph::isCyclicUtil(int v, bool visited[], bool *recStack)
 		list<int>::iterator i; 
 		for(i = adj[v].begin(); i != adj[v].end(); ++i) 
 		{ 
-			if ( !visited[*i] && isCyclicUtil(*i, visited, recStack) )  //
+			if ( !visited[*i] && isCyclicUtil(*i, visited, recStack) )  // not (visited is false) && ..
 				{ 
 				return true; 
 				}
@@ -55,7 +55,7 @@ bool Graph::isCyclicUtil(int v, bool visited[], bool *recStack)
 				printf("Found a cycle at node %d\n", v+1);
 				count =1;
 				// return true;
-				// continue; 
+				continue; 
 				}
 		} 
 	} 
@@ -64,7 +64,6 @@ bool Graph::isCyclicUtil(int v, bool visited[], bool *recStack)
 } 
 
 // Returns true if the graph contains a cycle, else false. 
-// This function is a variation of DFS() in https://www.geeksforgeeks.org/archives/18212 
 bool Graph::isCyclic() 
 { 
 	// Mark all the vertices as not visited and not part of recursion 
@@ -92,15 +91,6 @@ bool Graph::isCyclic()
 
 int main() 
 { 
-	//Create a graph given in the above diagram 
-	// Graph g(4); 
-	// g.addEdge(0, 1); 
-	// g.addEdge(0, 2); 
-	// g.addEdge(1, 2); 
-	// g.addEdge(2, 0); 
-	// g.addEdge(2, 3); 
-	// g.addEdge(3, 3); 
-
 //User input data
    int n,m;
    scanf("%d %d", &n, &m);
