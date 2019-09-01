@@ -224,7 +224,7 @@ void printArr(int dist[], int n)
 
 // The main function that calulates distances of shortest paths from src to all 
 // vertices. It is a O(ELogV) function 
-void dijkstra(struct Graph* graph, int src) 
+int * dijkstra(struct Graph* graph, int src) 
 { 
 	int V = graph->V;// Get the number of vertices in graph 
 	int dist[V];	 // dist values used to pick minimum weight edge in cut 
@@ -276,6 +276,7 @@ void dijkstra(struct Graph* graph, int src)
 			} 
 			pCrawl = pCrawl->next; 
 		} 
+
 	} 
 
 	// print the calculated shortest distances 
@@ -295,7 +296,7 @@ void dijkstra(struct Graph* graph, int src)
       printf("Smallest distance from source node(%d) %d\n\n",src,smallest);
    }
    
-    
+    return dist;
 } 
 
 // Driver program to test above functions 
@@ -303,6 +304,8 @@ int main()
 { 
    // create the graph given in above fugure 
 	int V = 9; 
+   int dis[V][V];
+   int *ptr;
 	struct Graph* graph = createGraph(V); 
 	addEdge(graph, 0, 1, 4); 
 	addEdge(graph, 0, 7, 8); 
@@ -321,7 +324,8 @@ int main()
 
    for(int i=0;i<V;i++)
    {
-	   dijkstra(graph, i); 
+	   ptr = dijkstra(graph, i);
+      dis[V] = *ptr;
    }
    return 0; 
 } 
