@@ -222,9 +222,9 @@ return false;
 // A utility function used to print the solution 
 void printArr(int dist[], int n) 
 { 
-	printf("Vertex Distance from Source\n"); 
-	for (int i = 0; i < n; ++i) 
-		printf("%d \t\t %d\n", i, dist[i]); 
+	//printf("Vertex Distance from Source\n"); 
+	//for (int i = 0; i < n; ++i) 
+		//printf("%d \t\t %d\n", i, dist[i]); 
 } 
 
 
@@ -306,11 +306,11 @@ int* dijkstra(struct Graph* graph, int src)
    }
    if (smallest!= __INT_MAX__/2)
    {
-      printf("Smallest distance from source node(%d) to dest(%d) is %d \n\n",src,dest,smallest);
+      //printf("Smallest distance from source node(%d) to dest(%d) is %d \n\n",src,dest,smallest);
    }
    else
    {
-	   printf("There is no connection out from node(%d) \n", src);
+	   //printf("There is no connection out from node(%d) \n", src);
    }
    
    return dist; 
@@ -342,7 +342,7 @@ void findloop( int *arr, int V)
             if ((dis[i][j]+dis[j][i])< smallest)
             {
                 smallest   =   dis[i][j]+dis[j][i];
-				printf("%d %d %d %d Smallest :%d \n",i,j,dis[i][j],dis[j][i], smallest);
+				//printf("%d %d %d %d Smallest :%d \n",i,j,dis[i][j],dis[j][i], smallest);
             }
         }        
     }
@@ -404,15 +404,15 @@ int main()
 	   } 
    }
 	
-	for(int i=0;i<V;i++)
-	{
-		for(int j=0;j<V;j++)
-   		{
-	   		printf("%d\n",dis[i][j]) ;
-   		}
-		printf("\n");
+	// for(int i=0;i<V;i++)
+	// {
+	// 	for(int j=0;j<V;j++)
+   	// 	{
+	//    		printf("%d\n",dis[i][j]) ;
+   	// 	}
+	// 	printf("\n");
 
-	}
+	// }
 
 	findloop((int *)dis,V);	
    return 0; 

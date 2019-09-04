@@ -80,8 +80,7 @@ bool Graph::isCyclic()
 	// DFS trees 
 	for(int i = 0; i < V; i++) 
 		if (isCyclicUtil(i, visited, recStack)) 
-			{	printf("\n\n\nSource node of the cycle: %d\n",i);
-				return true;
+			{	return true;
 			} 
 	if (count ==0){
 		cout << "Graph doesn't contain cycle\n";
