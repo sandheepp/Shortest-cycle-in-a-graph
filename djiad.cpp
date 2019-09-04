@@ -283,19 +283,19 @@ void dijkstra(struct Graph* graph, int src)
 
    //to find the distance from one point to another point
    int smallest=INT_MAX;
+   int dest =0;
    for(int count=0;count <V;count++)
    {
       if(dist[count]!=0 && dist[count]<smallest)
       {
          smallest = dist[count];
+		 dest= count;
       }
    }
    if (smallest!= INT_MAX)
    {
-      printf("Smallest distance from source node(%d) %d\n\n",src,smallest);
+      printf("Smallest distance from source node(%d) to dest(%d) is %d\n\n",src,dest,smallest);
    }
-   
-    
 } 
 
 // Driver program to test above functions 
