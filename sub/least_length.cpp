@@ -31,7 +31,6 @@ struct Graph
 
 //Functions
 
-
 // A utility function to create a new adjacency list node 
 struct AdjListNode* newAdjListNode(int dest, int weight) 
 { 
@@ -67,11 +66,6 @@ void addEdge(struct Graph* graph, int src, int dest, int weight)
 	struct AdjListNode* newNode = newAdjListNode(dest, weight); 
 	newNode->next = graph->array[src].head; 
 	graph->array[src].head = newNode; 
-
-	// Since graph is undirected, add an edge from dest to src also 
-	// newNode = newAdjListNode(src, weight); 
-	// newNode->next = graph->array[dest].head; 
-	// graph->array[dest].head = newNode; 
 } 
 
 // Structure to represent a min heap node 
@@ -219,16 +213,6 @@ if (minHeap->pos[v] < minHeap->size)
 return false; 
 } 
 
-// A utility function used to print the solution 
-void printArr(int dist[], int n) 
-{ 
-	//printf("Vertex Distance from Source\n"); 
-	//for (int i = 0; i < n; ++i) 
-		//printf("%d \t\t %d\n", i, dist[i]); 
-} 
-
-
-
 // The main function that calulates distances of shortest paths from src to all 
 // vertices. It is a O(ELogV) function 
 int* dijkstra(struct Graph* graph, int src) 
@@ -304,16 +288,7 @@ int* dijkstra(struct Graph* graph, int src)
 		 dest= count;
       }
    }
-   if (smallest!= __INT_MAX__/2)
-   {
-      //printf("Smallest distance from source node(%d) to dest(%d) is %d \n\n",src,dest,smallest);
-   }
-   else
-   {
-	   //printf("There is no connection out from node(%d) \n", src);
-   }
-   
-   return dist; 
+ return dist; 
 } 
 
 //Loop to find the smallest loop
@@ -342,36 +317,18 @@ void findloop( int *arr, int V)
             if ((dis[i][j]+dis[j][i])< smallest)
             {
                 smallest   =   dis[i][j]+dis[j][i];
-				//printf("%d %d %d %d Smallest :%d \n",i,j,dis[i][j],dis[j][i], smallest);
-            }
+			}
         }        
     }
     printf("%d\n",smallest);
 }
 
-// Driver program
+// Driver program for the algorithm
 int main() 
 { 
    // create the graph given in above fugure 
 	int V = 9; 
 	struct Graph* graph = createGraph(V); 
-
-
-//adding edges of djikstra
-	// addEdge(graph, 0, 1, 4); 
-	// addEdge(graph, 0, 7, 8); 
-	// addEdge(graph, 1, 2, 8); 
-	// addEdge(graph, 1, 7, 11); 
-	// addEdge(graph, 2, 3, 7); 
-	// addEdge(graph, 2, 8, 2); 
-	// addEdge(graph, 2, 5, 4); 
-	// addEdge(graph, 3, 4, 9); 
-	// addEdge(graph, 3, 5, 14); 
-	// addEdge(graph, 4, 5, 10); 
-	// addEdge(graph, 5, 6, 2); 
-	// addEdge(graph, 6, 7, 1); 
-	// addEdge(graph, 6, 8, 6); 
-	// addEdge(graph, 7, 8, 7); 
 
 	int n,m;
     scanf("%d %d", &n, &m);
@@ -381,13 +338,11 @@ int main()
 
     int i;
     for( i = 0; i < m; i +=1 ){
-        // printf("line%d : ",i);
         scanf("%d%d%ld%ld",&u[i],&v[i], &t[i], &h[i]);
     }
 	
-    // making above uhown graph 
+    // making graph adding edges
 	for (int j=0; j<m;j++){
-        // printf("%ld", t[j]-h[j]);
 	    addEdge(graph,u[j]-1, v[j]-1, h[j]-t[j]); 
     }
 
@@ -403,18 +358,6 @@ int main()
 		   dis[i][j]= *(ptr+j);
 	   } 
    }
-	
-	// for(int i=0;i<V;i++)
-	// {
-	// 	for(int j=0;j<V;j++)
-   	// 	{
-	//    		printf("%d\n",dis[i][j]) ;
-   	// 	}
-	// 	printf("\n");
-
-	// }
-
-	findloop((int *)dis,V);	
-   return 0; 
-
+    findloop((int *)dis,V);	
+    return 0; 
 } 

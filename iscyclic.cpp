@@ -54,6 +54,7 @@ bool Graph::isCyclicUtil(int v, bool visited[], bool *recStack)
 				{
 				printf("Found a cycle at node %d\n", v+1);
 				count =1;
+				flag=0;
 				// return true;
 				continue; 
 				}
