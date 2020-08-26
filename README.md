@@ -1,4 +1,4 @@
-# CPP_shortest_cycle
+# CPP_Shortest_Cycle
 
 Different methods to find the shortest cycle.
 
